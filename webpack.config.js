@@ -48,6 +48,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin({
             filename: '/styles/calculator.css',
+            allChunks: true,
             disable: process.env.NODE_ENV !== 'production'
         }),
         new webpack.optimize.UglifyJsPlugin(),
