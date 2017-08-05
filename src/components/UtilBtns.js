@@ -4,7 +4,7 @@ export default class UtilBtns extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            buttons: [
+            util: [
                 {name: 'C', attr: 'num'},
                 {name: '+/-', attr: 'num'},
                 {name: '%', attr: 'num'},
@@ -15,9 +15,9 @@ export default class UtilBtns extends React.Component {
     render() {
         return(
             <div className="btns-util">
-                {this.state.buttons.map((calculator, i) => {
+                {this.state.util.map((btns, i) => {
                     return(
-                        <button type="button" value={calculator.name} key={i}>{calculator.name}</button>
+                        <button type="button" value={btns.name} key={i}>{btns.name}</button>
                     );
                 })}
             </div>

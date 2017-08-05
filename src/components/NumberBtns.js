@@ -4,7 +4,7 @@ export default class NumberBtns extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            buttons: [
+            number: [
                 {name: '7', attr: 'num'},
                 {name: '8', attr: 'num'},
                 {name: '9', attr: 'num'},
@@ -21,9 +21,9 @@ export default class NumberBtns extends React.Component {
     render() {
         return(
             <div className="btns-number">
-                {this.state.buttons.map((calculator, i) => {
+                {this.state.number.map((btns, i) => {
                     return(
-                        <button type="button" value={calculator.name} key={i}>{calculator.name}</button>
+                        <button type="button" value={btns.name} key={i}>{btns.name}</button>
                     );
                 })}
             </div>
