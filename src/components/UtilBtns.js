@@ -3,21 +3,17 @@ import React from 'react';
 export default class UtilBtns extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            util: [
-                {name: 'C', attr: 'num'},
-                {name: '+/-', attr: 'num'},
-                {name: '%', attr: 'num'},
-                {name: '.', attr: 'num'},
-            ]
-        }
-    }    
+        this.onUtil = this.onUtil.bind(this);
+    }
+    onUtil(value, attr){
+        this.props.onPromptUtil(value, attr);
+    }  
     render() {
         return(
             <div className="btns-util">
-                {this.state.util.map((btns, i) => {
+                {this.props.util.map((btns, i) => {
                     return(
-                        <button type="button" value={btns.name} key={i}>{btns.name}</button>
+                        <button type="button" value={btns.name} key={btns.name} onClick={()=>this.onUtil(btns.name, btns.attr)}>{btns.name}</button>
                     );
                 })}
             </div>

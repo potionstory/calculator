@@ -51,7 +51,7 @@ module.exports = {
             allChunks: true,
             disable: process.env.NODE_ENV !== 'production'
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'calculator',
