@@ -14,15 +14,18 @@ export default class Calculator extends React.Component {
     }
     handleCompute(value, attr){
         console.log(value + ' : ' + attr);
-        let temp = (this.state.result != 0) ? this.state.result : '';
-        this.setState({
-            result: temp + value
-        });
+        if (attr == 'num'){
+            this.setState({
+                operand: value,
+                result: value
+            });
+            console.log(this.state.operand);
+        }
     }
     render() {
         return(
             <div className="calculator">
-                <Output result={this.state.result}/>
+                <Output Onresult={this.state.result}/>
                 <Input onValue={this.handleCompute}/>
             </div>
         );
