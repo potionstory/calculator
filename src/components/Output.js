@@ -4,7 +4,7 @@ export default class Output extends React.Component {
     render() {
         return(
             <div className="output">
-                {this.props.Onresult}
+                {this.props.onResult}
             </div>
         );
     }
