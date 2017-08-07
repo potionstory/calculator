@@ -15,6 +15,7 @@ export default class Calculator extends React.Component {
         this.handleCompute = this.handleCompute.bind(this);
         this.computeResult = this.computeResult.bind(this);
         this.computePlusMinus = this.computePlusMinus.bind(this);
+        this.computeDicimalPoint = this.computeDicimalPoint.bind(this);
         this.computeNumber = this.computeNumber.bind(this);
         this.computeOper = this.computeOper.bind(this);
         this.computeUtil = this.computeUtil.bind(this);
