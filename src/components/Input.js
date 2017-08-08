@@ -20,7 +20,7 @@ export default class Input extends React.Component {
                 {name: '0', attr: 'num'}
             ],
             util: [
-                {name: 'C', attr: 'util'},
+                {name: 'AC', attr: 'util'},
                 {name: '+/-', attr: 'util'},
                 {name: '%', attr: 'util'},
                 {name: '.', attr: 'util'}
@@ -42,7 +42,7 @@ export default class Input extends React.Component {
         return(
             <div className="input">
                 <NumberBtns number={this.state.number} onPromptNumber={this.onPrompt}/>
-                <UtilBtns util={this.state.util} onPromptUtil={this.onPrompt}/>
+                <UtilBtns util={this.state.util} onPromptUtil={this.onPrompt} onBtnClear={this.props.onBtnClear} onClear={this.props.onClear}/>
                 <OperBtns oper={this.state.oper} onPromptOper={this.onPrompt}/>
             </div>
         );

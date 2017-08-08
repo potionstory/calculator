@@ -6,12 +6,14 @@ export default class Calculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isClear: 'AC',
             isOper: false,
             operand01: 0,
             operand02: 0,
             operator: '',
             result: 0
         };
+        this.handleClear = this.handleClear.bind(this);
         this.handleCompute = this.handleCompute.bind(this);
         this.computeResult = this.computeResult.bind(this);
         this.computePlusMinus = this.computePlusMinus.bind(this);
@@ -19,6 +21,16 @@ export default class Calculator extends React.Component {
         this.computeNumber = this.computeNumber.bind(this);
         this.computeOper = this.computeOper.bind(this);
         this.computeUtil = this.computeUtil.bind(this);
+    }
+    handleClear(){
+        this.setState({
+            isClear: 'AC',
+            isOper: false,
+            operand01: 0,
+            operand02: 0,
+            operator: '',
+            result: 0
+        });
     }
     handleCompute(value, attr) {
         switch(attr) {
@@ -52,30 +64,42 @@ export default class Calculator extends React.Component {
     }
     computeDicimalPoint() {
         if (this.state.isOper != true) {
-            let n = this.state.operand01;
+            let n = (this.state.operand01 != 0) ? this.state.operand01 + '.' : '0.';
             this.setState({
-                operand01: n + '.',
-                result: n + '.'
+            isClear: 'C',
+                operand01: n,
+                result: n
             });
         } else {
-            let n = this.state.operand02;
+            let n = (this.state.operand02 != 0) ? this.state.operand02 + '.' : '0.';
             this.setState({
-                operand02: n + '.',
-                result: n + '.'
+            istClear: 'C',
+                operand02: n,
+                result: n
             });
         }
     }
     computeNumber(value, attr) {
         let n = '';
         if (!this.state.isOper){
-            n = ((this.state.operand01 == 0) || (this.state.operator != '')) ? value : this.state.operand01 + String(value);
+            n = ((this.state.operand01 == '0') || (this.state.operator != '')) ? value : this.state.operand01 + String(value);
+            if (n !=0) {
+                this.setState({
+            isClear: 'C'
+                });
+            }
             this.setState({
                 operand01: n,
                 operator: '',
                 result: n
             });
         } else {
-            n = (this.state.operand02 == 0) ? value : this.state.operand02 + String(value);
+            n = (this.state.operand02 == '0') ? value : this.state.operand02 + String(value);
+            if (n !=0) {
+                this.setState({
+            isClear: 'C'
+                });
+            }
             this.setState({
                 operand02: n,
                 result: n
@@ -112,15 +136,6 @@ export default class Calculator extends React.Component {
     }
     computeUtil(value, attr) {
         switch(value) {
-            case 'C':
-                this.setState({
-                    isOper: false,
-                    operand01: 0,
-                    operand02: 0,
-                    operator: '',
-                    result: 0
-                });
-                break;
             case '+/-':
                 this.computePlusMinus();
                 break;
@@ -139,7 +154,7 @@ export default class Calculator extends React.Component {
         return(
             <div className="calculator">
                 <Output onResult={this.state.result}/>
-                <Input onValue={this.handleCompute}/>
+                <Input onValue={this.handleCompute} onBtnClear={this.handleClear} onClear={this.state.isClear}/>
             </div>
         );
     }
